@@ -138,38 +138,55 @@ var tovar3 = {
   tprice: 7000,
   timg: "Photo\ssd.jpg",
   kilk: 0
-}; // Находим элементы на странице
+};
+var cartWraper = document.querySelector('.cart-wraper');
+window.addEventListener('click', function (event) {
+  // перевіряємо чи обєкт це кнопка +
+  if (event.target.dataset.action === "plus") {
+    var counterWraper = event.target.closest('.container');
+    var counter2 = counterWraper.querySelector('[data-counter]');
+    counter2.innerText = ++counter2.innerText;
+  } // перевіряємо чи обєкт це кнопка -
 
-var btnAdd1 = document.querySelector('[data-add="cart1"]');
-var btnAdd2 = document.querySelector('[data-add="cart2"]');
-var btnAdd3 = document.querySelector('[data-add="cart3"]');
-var sum = document.querySelector('[data-counter]');
-var counter = parseInt(sum.innerText);
-console.log(counter); // Отслеживаем клик на кнопку btnPlus
 
-btnAdd1.addEventListener('click', function () {
-  tovar1.kilk = ++tovar1.kilk;
-  counter = counter + tovar1.tprice;
-  sum.innerText = counter;
+  if (event.target.dataset.action === "minus") {
+    var _counterWraper = event.target.closest('.container');
+
+    var _counter = _counterWraper.querySelector('[data-counter]');
+
+    if (parseInt(_counter.innerText) > 1) {
+      _counter.innerText = --_counter.innerText;
+    }
+  }
 });
-btnAdd2.addEventListener('click', function () {
-  tovar2.kilk = ++tovar2.kilk;
-  counter = counter + tovar2.tprice;
-  sum.innerText = counter;
-  console.log();
-});
-btnAdd3.addEventListener('click', function () {
-  tovar3.kilk = ++tovar3.kilk;
-  counter = counter + tovar3.tprice;
-  sum.innerText = counter;
-});
-var btncart = document.querySelector('[data-cart="cart"]');
-btncart.addEventListener('click', function () {
-  console.log(tovar1.kilk);
+window.addEventListener('click', function (event) {
+  if (event.target.hasAttribute('data-add')) {
+    console.log('click in button');
+    var card = event.target.closest('.card');
+    console.log(card);
+    var productInfo = {
+      imgSrc: card.querySelector('.gphoto').getAttribute('src'),
+      title: card.querySelector('.title').innerText,
+      price: card.querySelector('.price').innerText,
+      counter: card.querySelector('[data-counter]').innerText,
+      id: card.dataset.id
+    };
+    var itemInCart = cartWraper.querySelector("[data-id=\"".concat(productInfo.id, "\"]"));
+    console.log(itemInCart);
 
-  for (var i = 1; i < 4; i++) {}
+    if (itemInCart) {
+      var conterelement = itemInCart.querySelector('[data-counter]');
+      conterelement.innerText = parseInt(conterelement.innerText) + parseInt(productInfo.counter);
+    } else {
+      var cartItemHTML = "<div class=\"card\" data-id=\"".concat(productInfo.id, "\">\n        <div><img class=\"gphoto haha\" src=\"").concat(productInfo.imgSrc, "\" alt=\"photo\"></div>\n        <div class=\"title\">").concat(productInfo.title, "</div>\n        <div class=\"container\">\n            <div><h3>\u0426\u0456\u043D\u0430:</h3></div>\n            <div><h3 class=\"price\">").concat(productInfo.price, "</h3></div>\n            <div><h3>\u0433\u0440\u043D.</h3></div>\n        </div>\n        <div class=\"container\">\n            <div><button type=\"button\" class=\"knop\" data-action=\"minus\">-</button></div>\n            <div data-counter>").concat(productInfo.counter, "</div>\n            <div><button type=\"button\" class=\"knop\" data-action=\"plus\">+</button></div>\n        </div>\n    </div>");
+      cartWraper.insertAdjacentHTML("beforeend", cartItemHTML);
+    } // скидаємо щотчик на 1
 
-  var cartItemHTML = "<div><img class=\"gphoto haha\" src=\"Photogpu.jpg\" alt=\"photo\"></div>";
+
+    card.querySelector('[data-counter]').innerText = 1; //   const kilk =card.querySelector('[data-counter]').innerText
+    // const summ = document.querySelector('.summ').innerText;
+    //summ= parseInt(summ)+ parseInt(productInfo.price)*parseInt(kilk ) 
+  }
 });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

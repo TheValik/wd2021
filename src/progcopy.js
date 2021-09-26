@@ -20,43 +20,79 @@ const tovar3={
     kilk:0,
 }
 
+const cartWraper = document.querySelector('.cart-wraper')
 
+window.addEventListener('click', function(event){
 
-// Находим элементы на странице
-const btnAdd1 = document.querySelector('[data-add="cart1"]');
-const btnAdd2 = document.querySelector('[data-add="cart2"]');
-const btnAdd3 = document.querySelector('[data-add="cart3"]');
-const sum = document.querySelector('[data-counter]') ;
-let counter= parseInt(sum.innerText)
+    // перевіряємо чи обєкт це кнопка +
+    if(event.target.dataset.action==="plus"){
+        const counterWraper=  event.target.closest('.container')
+        const counter2 = counterWraper.querySelector('[data-counter]')
+        counter2.innerText=++counter2.innerText
 
-console.log(counter)
-
-// Отслеживаем клик на кнопку btnPlus
-btnAdd1.addEventListener('click', function () {
-    tovar1.kilk=++tovar1.kilk
-    counter=counter + tovar1.tprice
-    sum.innerText=counter
-})
-btnAdd2.addEventListener('click', function () {
-    tovar2.kilk=++tovar2.kilk
-    counter=counter + tovar2.tprice
-    sum.innerText=counter
-    console.log()
-})
-btnAdd3.addEventListener('click', function () {
-    tovar3.kilk=++tovar3.kilk
-    counter=counter + tovar3.tprice
-    sum.innerText=counter
-})
-
-const btncart = document.querySelector('[data-cart="cart"]');
-btncart.addEventListener('click', function(){
-    console.log(tovar1.kilk)
-
-    for(let i=1; i<4; i++){
-
+    }
+    // перевіряємо чи обєкт це кнопка -
+    if(event.target.dataset.action==="minus"){
+        
+        const counterWraper=  event.target.closest('.container')
+        const counter2 = counterWraper.querySelector('[data-counter]')
+        if(parseInt(counter2.innerText)>1){
+            counter2.innerText=--counter2.innerText
+        }
         
     }
-    const cartItemHTML =`<div><img class="gphoto haha" src="Photo\gpu.jpg" alt="photo"></div>`
+})
+
+
+window.addEventListener('click', function(event){
+
+    if(event.target.hasAttribute('data-add')){
+
+        console.log('click in button')
+
+        const card =event.target.closest('.card')
+        console.log(card)
+
+        const productInfo ={
+            imgSrc: card.querySelector('.gphoto').getAttribute('src'),
+            title: card.querySelector('.title').innerText,
+            price: card.querySelector('.price').innerText,
+            counter: card.querySelector('[data-counter]').innerText,
+            id: card.dataset.id,
+
+        }
+
+        const itemInCart = cartWraper.querySelector(`[data-id="${productInfo.id}"]`)
+        console.log(itemInCart)
+        if(itemInCart){
+            const conterelement = itemInCart.querySelector('[data-counter]')
+            conterelement.innerText = parseInt(conterelement.innerText) + parseInt(productInfo.counter)
+        }
+        else{
+                    const cartItemHTML = `<div class="card" data-id="${productInfo.id}">
+        <div><img class="gphoto haha" src="${productInfo.imgSrc}" alt="photo"></div>
+        <div class="title">${productInfo.title}</div>
+        <div class="container">
+            <div><h3>Ціна:</h3></div>
+            <div><h3 class="price">${productInfo.price}</h3></div>
+            <div><h3>грн.</h3></div>
+        </div>
+        <div class="container">
+            <div><button type="button" class="knop" data-action="minus">-</button></div>
+            <div data-counter>${productInfo.counter}</div>
+            <div><button type="button" class="knop" data-action="plus">+</button></div>
+        </div>
+    </div>`
+        cartWraper.insertAdjacentHTML("beforeend", cartItemHTML)
+    }
+// скидаємо щотчик на 1
+    card.querySelector('[data-counter]').innerText=1
+
+
+ //   const kilk =card.querySelector('[data-counter]').innerText
+   // const summ = document.querySelector('.summ').innerText;
+    //summ= parseInt(summ)+ parseInt(productInfo.price)*parseInt(kilk ) 
+        }
+
 
 })
