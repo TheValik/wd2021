@@ -117,79 +117,61 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"progcopy.js":[function(require,module,exports) {
+var tovar1 = {
+  tname: "CPU",
+  tcode: 123,
+  tprice: 5000,
+  timg: "Photo\cpu.jpg",
+  kilk: 0
+};
+var tovar2 = {
+  tname: "GPU",
+  tcode: 456,
+  tprice: 20000,
+  timg: "Photo\gpu.jpg",
+  kilk: 0
+};
+var tovar3 = {
+  tname: "SSD",
+  tcode: 789,
+  tprice: 7000,
+  timg: "Photo\ssd.jpg",
+  kilk: 0
+}; // Находим элементы на странице
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
+var btnAdd1 = document.querySelector('[data-add="cart1"]');
+var btnAdd2 = document.querySelector('[data-add="cart2"]');
+var btnAdd3 = document.querySelector('[data-add="cart3"]');
+var sum = document.querySelector('[data-counter]');
+var counter = parseInt(sum.innerText);
+console.log(counter); // Отслеживаем клик на кнопку btnPlus
 
-  return bundleURL;
-}
+btnAdd1.addEventListener('click', function () {
+  tovar1.kilk = ++tovar1.kilk;
+  counter = counter + tovar1.tprice;
+  sum.innerText = counter;
+});
+btnAdd2.addEventListener('click', function () {
+  tovar2.kilk = ++tovar2.kilk;
+  counter = counter + tovar2.tprice;
+  sum.innerText = counter;
+  console.log();
+});
+btnAdd3.addEventListener('click', function () {
+  tovar3.kilk = ++tovar3.kilk;
+  counter = counter + tovar3.tprice;
+  sum.innerText = counter;
+});
+var btncart = document.querySelector('[data-cart="cart"]');
+btncart.addEventListener('click', function () {
+  console.log(tovar1.kilk);
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+  for (var i = 1; i < 4; i++) {}
 
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.sass":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  var cartItemHTML = "<div><img class=\"gphoto haha\" src=\"Photogpu.jpg\" alt=\"photo\"></div>";
+});
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +375,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/style.a08d0c2a.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","progcopy.js"], null)
+//# sourceMappingURL=/progcopy.4a8a309d.js.map
