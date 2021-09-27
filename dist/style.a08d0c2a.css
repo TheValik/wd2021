@@ -36,9 +36,8 @@ body {
 }
 
 .container3 {
-  display: inline-block;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .gphoto {
@@ -49,6 +48,10 @@ body {
 
 .title {
   text-align: center;
+}
+
+.figna {
+  margin: 10px;
 }
 
 .card {
