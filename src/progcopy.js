@@ -20,6 +20,27 @@ const tovar3={
     kilk:0,
 }
 
+//сума заказу
+function calcPrice(){
+    // шукаємо обєкт в корзині
+    let totalPrice=0;
+    const cartItems = document.querySelectorAll('.cart-item')
+    const pushPrice = document.querySelector('.summ')
+    const pushPrice2 = document.querySelector('.prise')
+
+    cartItems.forEach(function(item){
+        const amountEL = item.querySelector('[data-counter]')
+        const priceEL = item.querySelector('.price')
+        const currentPrice = parseInt(amountEL.innerText)*parseInt(priceEL.innerText)
+        totalPrice+=currentPrice
+        
+    })
+
+    pushPrice.innerText=totalPrice
+    pushPrice2.innerText=totalPrice
+
+}
+
 const cartWraper = document.querySelector('.cart-wraper')
 
 window.addEventListener('click', function(event){
@@ -29,6 +50,7 @@ window.addEventListener('click', function(event){
         const counterWraper=  event.target.closest('.container')
         const counter2 = counterWraper.querySelector('[data-counter]')
         counter2.innerText=++counter2.innerText
+        calcPrice()
 
     }
     // перевіряємо чи обєкт це кнопка -
@@ -38,6 +60,13 @@ window.addEventListener('click', function(event){
         const counter2 = counterWraper.querySelector('[data-counter]')
         if(parseInt(counter2.innerText)>1){
             counter2.innerText=--counter2.innerText
+            calcPrice()
+        }
+        //перевірка на товар який в корзині
+        else if(event.target.closest('.cart-wraper')&& parseInt(counter2.innerText)===1){
+            //Видаляємо товар з корзини
+ //            event.target.closest('.haha2').remove();
+             event.target.closest('.cart-item').remove()
         }
         
     }
@@ -48,10 +77,8 @@ window.addEventListener('click', function(event){
 
     if(event.target.hasAttribute('data-add')){
 
-        console.log('click in button')
 
         const card =event.target.closest('.card')
-        console.log(card)
 
         const productInfo ={
             imgSrc: card.querySelector('.gphoto').getAttribute('src'),
@@ -63,14 +90,13 @@ window.addEventListener('click', function(event){
         }
 
         const itemInCart = cartWraper.querySelector(`[data-id="${productInfo.id}"]`)
-        console.log(itemInCart)
         if(itemInCart){
             const conterelement = itemInCart.querySelector('[data-counter]')
             conterelement.innerText = parseInt(conterelement.innerText) + parseInt(productInfo.counter)
         }
         else{
-                    const cartItemHTML = `<div class="card" data-id="${productInfo.id}">
-        <div><img class="gphoto haha" src="${productInfo.imgSrc}" alt="photo"></div>
+                    const cartItemHTML = `<div class="corz cart-item" data-id="${productInfo.id}">
+        <div ><img class="gphoto" src="${productInfo.imgSrc}" alt="photo"></div>
         <div class="title">${productInfo.title}</div>
         <div class="container">
             <div><h3>Ціна:</h3></div>
@@ -88,11 +114,21 @@ window.addEventListener('click', function(event){
 // скидаємо щотчик на 1
     card.querySelector('[data-counter]').innerText=1
 
+    calcPrice()
 
- //   const kilk =card.querySelector('[data-counter]').innerText
-   // const summ = document.querySelector('.summ').innerText;
+    }
+    //const kilk =card.querySelector('[data-counter]').innerText
+    //const summ = document.querySelector('.summ').innerText;
     //summ= parseInt(summ)+ parseInt(productInfo.price)*parseInt(kilk ) 
-        }
+        
 
 
 })
+
+
+const btnoform = document.querySelector('.oform');
+ btnoform.addEventListener('click', function () {
+
+    const nom =document.querySelector('.phone').value
+    alert(`Замовлення оформлено на телефон: ${nom}`)
+ }) 

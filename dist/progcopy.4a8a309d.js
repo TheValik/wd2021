@@ -138,7 +138,24 @@ var tovar3 = {
   tprice: 7000,
   timg: "Photo\ssd.jpg",
   kilk: 0
-};
+}; //сума заказу
+
+function calcPrice() {
+  // шукаємо обєкт в корзині
+  var totalPrice = 0;
+  var cartItems = document.querySelectorAll('.cart-item');
+  var pushPrice = document.querySelector('.summ');
+  var pushPrice2 = document.querySelector('.prise');
+  cartItems.forEach(function (item) {
+    var amountEL = item.querySelector('[data-counter]');
+    var priceEL = item.querySelector('.price');
+    var currentPrice = parseInt(amountEL.innerText) * parseInt(priceEL.innerText);
+    totalPrice += currentPrice;
+  });
+  pushPrice.innerText = totalPrice;
+  pushPrice2.innerText = totalPrice;
+}
+
 var cartWraper = document.querySelector('.cart-wraper');
 window.addEventListener('click', function (event) {
   // перевіряємо чи обєкт це кнопка +
@@ -146,6 +163,7 @@ window.addEventListener('click', function (event) {
     var counterWraper = event.target.closest('.container');
     var counter2 = counterWraper.querySelector('[data-counter]');
     counter2.innerText = ++counter2.innerText;
+    calcPrice();
   } // перевіряємо чи обєкт це кнопка -
 
 
@@ -156,14 +174,18 @@ window.addEventListener('click', function (event) {
 
     if (parseInt(_counter.innerText) > 1) {
       _counter.innerText = --_counter.innerText;
+      calcPrice();
+    } //перевірка на товар який в корзині
+    else if (event.target.closest('.cart-wraper') && parseInt(_counter.innerText) === 1) {
+      //Видаляємо товар з корзини
+      //            event.target.closest('.haha2').remove();
+      event.target.closest('.cart-item').remove();
     }
   }
 });
 window.addEventListener('click', function (event) {
   if (event.target.hasAttribute('data-add')) {
-    console.log('click in button');
     var card = event.target.closest('.card');
-    console.log(card);
     var productInfo = {
       imgSrc: card.querySelector('.gphoto').getAttribute('src'),
       title: card.querySelector('.title').innerText,
@@ -172,21 +194,27 @@ window.addEventListener('click', function (event) {
       id: card.dataset.id
     };
     var itemInCart = cartWraper.querySelector("[data-id=\"".concat(productInfo.id, "\"]"));
-    console.log(itemInCart);
 
     if (itemInCart) {
       var conterelement = itemInCart.querySelector('[data-counter]');
       conterelement.innerText = parseInt(conterelement.innerText) + parseInt(productInfo.counter);
     } else {
-      var cartItemHTML = "<div class=\"card\" data-id=\"".concat(productInfo.id, "\">\n        <div><img class=\"gphoto haha\" src=\"").concat(productInfo.imgSrc, "\" alt=\"photo\"></div>\n        <div class=\"title\">").concat(productInfo.title, "</div>\n        <div class=\"container\">\n            <div><h3>\u0426\u0456\u043D\u0430:</h3></div>\n            <div><h3 class=\"price\">").concat(productInfo.price, "</h3></div>\n            <div><h3>\u0433\u0440\u043D.</h3></div>\n        </div>\n        <div class=\"container\">\n            <div><button type=\"button\" class=\"knop\" data-action=\"minus\">-</button></div>\n            <div data-counter>").concat(productInfo.counter, "</div>\n            <div><button type=\"button\" class=\"knop\" data-action=\"plus\">+</button></div>\n        </div>\n    </div>");
+      var cartItemHTML = "<div class=\"corz cart-item\" data-id=\"".concat(productInfo.id, "\">\n        <div ><img class=\"gphoto\" src=\"").concat(productInfo.imgSrc, "\" alt=\"photo\"></div>\n        <div class=\"title\">").concat(productInfo.title, "</div>\n        <div class=\"container\">\n            <div><h3>\u0426\u0456\u043D\u0430:</h3></div>\n            <div><h3 class=\"price\">").concat(productInfo.price, "</h3></div>\n            <div><h3>\u0433\u0440\u043D.</h3></div>\n        </div>\n        <div class=\"container\">\n            <div><button type=\"button\" class=\"knop\" data-action=\"minus\">-</button></div>\n            <div data-counter>").concat(productInfo.counter, "</div>\n            <div><button type=\"button\" class=\"knop\" data-action=\"plus\">+</button></div>\n        </div>\n    </div>");
       cartWraper.insertAdjacentHTML("beforeend", cartItemHTML);
     } // скидаємо щотчик на 1
 
 
-    card.querySelector('[data-counter]').innerText = 1; //   const kilk =card.querySelector('[data-counter]').innerText
-    // const summ = document.querySelector('.summ').innerText;
-    //summ= parseInt(summ)+ parseInt(productInfo.price)*parseInt(kilk ) 
-  }
+    card.querySelector('[data-counter]').innerText = 1;
+    calcPrice();
+  } //const kilk =card.querySelector('[data-counter]').innerText
+  //const summ = document.querySelector('.summ').innerText;
+  //summ= parseInt(summ)+ parseInt(productInfo.price)*parseInt(kilk ) 
+
+});
+var btnoform = document.querySelector('.oform');
+btnoform.addEventListener('click', function () {
+  var nom = document.querySelector('.phone').value;
+  alert("\u0417\u0430\u043C\u043E\u0432\u043B\u0435\u043D\u043D\u044F \u043E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u043E \u043D\u0430 \u0442\u0435\u043B\u0435\u0444\u043E\u043D: ".concat(nom));
 });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -216,7 +244,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54860" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54922" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

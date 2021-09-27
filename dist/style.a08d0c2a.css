@@ -1,19 +1,20 @@
+body {
+  font-family: calibri;
+}
+
 .galery {
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .galery2 {
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 100px;
+  flex-wrap: wrap;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .cart {
@@ -25,6 +26,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 40% 0 40%;
+  margin-bottom: 10px;
 }
 
 .container1 {
@@ -33,13 +35,62 @@
   align-items: center;
 }
 
+.container3 {
+  display: inline-block;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .gphoto {
   width: 100%;
-  max-width: 400px;
-  border-radius: 10%;
+  height: 200px;
+  border-radius: 20px;
 }
 
 .title {
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #bcc7e7;
+  padding: 10px;
+  border-radius: 30px;
+  margin: 10px;
+  max-width: 250px;
+  border: dotted 4px;
+}
+.card:hover {
+  background-color: #859ad5;
+  border: solid 4px;
+}
+
+.corz {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #bcc7e7;
+  padding: 10px;
+  border-radius: 30px;
+  margin: 10px;
+  max-width: 250px;
+  border: dotted 4px;
+}
+.corz:hover {
+  background-color: #859ad5;
+  border: solid 4px;
+}
+
+.oform {
+  display: flex;
+  flex-direction: column;
+}
+
+.zagolov {
   text-align: center;
 }
 
