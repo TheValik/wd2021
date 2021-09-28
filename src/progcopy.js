@@ -132,3 +132,5 @@ const btnoform = document.querySelector('.oform');
     const nom =document.querySelector('.phone').value
     alert(`Замовлення оформлено на телефон: ${nom}`)
  }) 
+
+ 

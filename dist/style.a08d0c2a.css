@@ -1,5 +1,7 @@
 body {
   font-family: calibri;
+  background-color: #1d1d35;
+  color: white;
 }
 
 .galery {
@@ -64,11 +66,12 @@ body {
   border-radius: 30px;
   margin: 10px;
   max-width: 250px;
-  border: dotted 4px;
+  border: dotted 4px #e01a1a;
+  color: black;
 }
 .card:hover {
   background-color: #859ad5;
-  border: solid 4px;
+  border: solid 4px #e01a1a;
 }
 
 .corz {
