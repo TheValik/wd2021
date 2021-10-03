@@ -38,7 +38,7 @@ const btnoform = document.querySelector('.oform');
 btnoform.addEventListener('click', function () {
 
     const nom =document.querySelector('.phone').value
-    let URL1 = "https://api.openweathermap.org/data/2.5/weather?q="+ nom +",%20UA&APPID=6ed55aaa6af55f24b71d529588503993"
+    let URL1 = "https://api.openweathermap.org/data/2.5/weather?q="+nom+",%20UA&APPID=6ed55aaa6af55f24b71d529588503993"
     minaty()
  }) 
 
