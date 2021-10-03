@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Lite",
+        "prise":"1000 UAH",
+        "time":"30 days"
+    },
+    {
+        "name": "Pro-lite",
+        "prise":"3000 UAH",
+        "time":"30 days"
+    },
+    {
+        "name": "Pro-Max-Nitro-RGB fusion-lite",
+        "prise":"7777 UAH",
+        "time":"31 days"
+    }
+]

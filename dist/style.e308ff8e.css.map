@@ -1,1 +1,1 @@
-{"version":3,"sources":["style.sass"],"names":[],"mappings":"AAAA;EACI,qBAAA;AACJ","file":"style.e308ff8e.css","sourceRoot":"..\\src","sourcesContent":["body\r\n    background-color: red"]}
+{"version":3,"sources":["style.sass"],"names":[],"mappings":"AAMA;EACI,yBAJE;AADN","file":"style.e308ff8e.css","sourceRoot":"..\\src","sourcesContent":["\r\n$col1:#bcc7e7\r\n$col2:#859ad5\r\n$col3:#6673b3\r\n$col4:#1d1d35\r\n    \r\nbody\r\n    background-color: $col4"]}

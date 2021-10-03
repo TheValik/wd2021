@@ -118,7 +118,80 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"script.js":[function(require,module,exports) {
-console.log("rab");
+//---------------------------------------------- 1
+var URL1 = "https://api.openweathermap.org/data/2.5/weather?q=Kyiv,%20UA&APPID=6ed55aaa6af55f24b71d529588503993";
+var text0 = document.getElementById("place10");
+var text1 = document.getElementById("place11");
+var text2 = document.getElementById("place12");
+var text3 = document.getElementById("place13");
+var res1;
+fetch(URL1).then(function (response) {
+  return response.json();
+}).then(function (r) {
+  res1 = r; //       console.log(res1);
+
+  vstavka1(res1);
+}).catch(function (err) {
+  return console.log(err);
+});
+
+var vstavka1 = function vstavka1(response) {
+  text0.textContent = "".concat(Math.round(res1.main.temp - 272.15), "\xB0");
+  text1.textContent = "".concat(Math.round(res1.main.temp_min - 272.15), "\xB0");
+  text2.textContent = "".concat(Math.round(res1.main.temp_max - 272.15), "\xB0");
+  text3.textContent = "".concat(Math.round(res1.main.feels_like - 272.15), "\xB0");
+}; //-------------------------------------------------------- 2
+
+
+var res2;
+fetch('https://jsonplaceholder.typicode.com/posts').then(function (response) {
+  return response.json();
+}).then(function (json) {
+  //   console.log(json[0].title);
+  res2 = json;
+  vstavka2(res2);
+});
+var place02 = document.getElementById("place20");
+var place12 = document.getElementById("place21");
+var place22 = document.getElementById("place22");
+var text02 = document.getElementById("text0");
+var text12 = document.getElementById("text1");
+var text22 = document.getElementById("text2");
+
+var vstavka2 = function vstavka2(response) {
+  place02.textContent = "".concat(res2[0].title);
+  place12.textContent = "".concat(res2[1].title);
+  place22.textContent = "".concat(res2[2].title);
+  text02.textContent = "".concat(res2[0].body);
+  text12.textContent = "".concat(res2[1].body);
+  text22.textContent = "".concat(res2[2].body);
+}; //------------------------------3
+
+
+var mistce = document.querySelector('.reklama');
+var URL3 = "data.json";
+var res3;
+var text = "";
+console.log(mistce);
+fetch(URL3).then(function (response) {
+  return response.json();
+}).then(function (r) {
+  res3 = r; //  console.log(res3[0].name);
+
+  vstavka3(res3);
+}).catch(function (err) {
+  return console.log(err);
+});
+
+var vstavka3 = function vstavka3(response) {
+  for (var i = 0; i < 3; i++) {
+    var textu = "        <div>Name: ".concat(res3[i].name, " </div>\n        <div>Price: ").concat(res3[i].prise, "</div>\n        <div>Time:  ").concat(res3[i].time, "</div>\n        <br>");
+    text += textu;
+  }
+
+  console.log(text);
+  mistce.innerHTML = text;
+};
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -147,7 +220,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60921" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55512" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
