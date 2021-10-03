@@ -137,21 +137,22 @@ function minaty() {
   }).catch(function (err) {
     return console.log(err);
   });
-
-  var vstavka1 = function vstavka1(response) {
-    text0.textContent = "".concat(Math.round(res1.main.temp - 272.15), "\xB0");
-    text1.textContent = "".concat(Math.round(res1.main.temp_min - 272.15), "\xB0");
-    text2.textContent = "".concat(Math.round(res1.main.temp_max - 272.15), "\xB0");
-    text3.textContent = "".concat(Math.round(res1.main.feels_like - 272.15), "\xB0");
-    text4.textContent = "".concat(res1.weather[0].description);
-  };
 }
 
+var vstavka1 = function vstavka1(response) {
+  text0.textContent = "".concat(Math.round(res1.main.temp - 272.15), "\xB0");
+  text1.textContent = "".concat(Math.round(res1.main.temp_min - 272.15), "\xB0");
+  text2.textContent = "".concat(Math.round(res1.main.temp_max - 272.15), "\xB0");
+  text3.textContent = "".concat(Math.round(res1.main.feels_like - 272.15), "\xB0");
+  text4.textContent = "".concat(res1.weather[0].description);
+};
+
 minaty();
-var btnoform = document.querySelector('.oform');
+var btnoform = document.querySelector('.knop');
 btnoform.addEventListener('click', function () {
   var nom = document.querySelector('.phone').value;
-  var URL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + nom + ",%20UA&APPID=6ed55aaa6af55f24b71d529588503993";
+  URL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + nom + "&APPID=6ed55aaa6af55f24b71d529588503993";
+  console.log(URL1);
   minaty();
 }); //-------------------------------------------------------- 2
 
@@ -197,7 +198,7 @@ fetch(URL3).then(function (response) {
 
 var vstavka3 = function vstavka3(response) {
   for (var i = 0; i < 3; i++) {
-    var textVstpoch = "<div>Name: ".concat(res3[i].name, " </div>\n         <div>Price: ").concat(res3[i].prise, "</div>\n         <div>Time:  ").concat(res3[i].time, "</div>\n         <br>");
+    var textVstpoch = "<div id=\"flex".concat(i, "\"><div>Name: ").concat(res3[i].name, " </div>\n         <div>Price: ").concat(res3[i].prise, "</div>\n         <div>Time:  ").concat(res3[i].time, "</div>\n         <br> <div id=\"back").concat(i, "\"></div>\n         </div>");
     textVstfin += textVstpoch;
   } //  console.log(textVstfin)
 

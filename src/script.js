@@ -12,8 +12,8 @@ let res1;
 
 function minaty(){
     fetch(URL1)
-    .then(response=> response.json())
-    .then(r=>{
+        .then(response=> response.json())
+        .then(r=>{
         res1 = r; 
  //       console.log(res1);
         vstavka1(res1)
@@ -22,7 +22,7 @@ function minaty(){
 
     .catch(err=>console.log(err))
 
-
+}
 const vstavka1 = (response) =>{
     text0.textContent =`${Math.round(res1.main.temp-272.15)}°`;
     text1.textContent =`${Math.round(res1.main.temp_min-272.15)}°`;
@@ -31,14 +31,15 @@ const vstavka1 = (response) =>{
     text4.textContent =`${res1.weather[0].description}`;
 
 }
-}
+
 minaty()
 
-const btnoform = document.querySelector('.oform');
+const btnoform = document.querySelector('.knop');
 btnoform.addEventListener('click', function () {
 
     const nom =document.querySelector('.phone').value
-    let URL1 = "https://api.openweathermap.org/data/2.5/weather?q="+nom+",%20UA&APPID=6ed55aaa6af55f24b71d529588503993"
+    URL1 = "https://api.openweathermap.org/data/2.5/weather?q="+nom+"&APPID=6ed55aaa6af55f24b71d529588503993"
+    console.log(URL1)
     minaty()
  }) 
 
@@ -98,10 +99,11 @@ fetch(URL3)
 
 const vstavka3 = (response) =>{
     for (let i=0;i<3;i++){
-        const textVstpoch = `<div>Name: ${res3[i].name} </div>
+        const textVstpoch = `<div id="flex${i}"><div>Name: ${res3[i].name} </div>
          <div>Price: ${res3[i].prise}</div>
          <div>Time:  ${res3[i].time}</div>
-         <br>`
+         <br> <div id="back${i}"></div>
+         </div>`
          textVstfin+=textVstpoch
     }
   //  console.log(textVstfin)
