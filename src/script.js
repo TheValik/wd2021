@@ -68,7 +68,7 @@ const vstavka2 = (response) =>{
 
 //------------------------------3
 
-let kudavst = document.querySelector('.reklama')
+let kudavst = document.querySelector('.taktak')
 const URL3= "data.json"
 let res3
 let textVstfin=""
@@ -93,40 +93,8 @@ const vstavka3 = (response) =>{
          textVstfin+=textVstpoch
     }
     console.log(textVstfin)
-    kudavst.innerText=textVstfin
+    kudavst.innerHTML=textVstfin
 }
-// let mistce = document.querySelector('.reklama')
-// const URL3 = "data.json"
-// let res3;
-// let text=""
-// console.log(mistce)
 
 
-// fetch(URL3)
-//     .then(response=> response.json())
-//     .then(r=>{
-//         res3 = r; 
-//       //  console.log(res3[0].name);
-//         vstavka3(res3)
-        
-//     })
 
-//     .catch(err=>console.log(err))
-
-
-// const vstavka3 = (response) =>{
-//     for(let i=0;i<3;i++){
-
-//         const textu = `        <div>Name: ${res3[i].name} </div>
-//         <div>Price: ${res3[i].prise}</div>
-//         <div>Time:  ${res3[i].time}</div>
-//         <br>`;
-//         text+=textu
-
-
-//     }
-//     console.log(text)
-//     mistce.innerHTML = text;
-   
-
-// }
