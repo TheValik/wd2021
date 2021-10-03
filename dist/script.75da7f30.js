@@ -168,16 +168,16 @@ var vstavka2 = function vstavka2(response) {
 }; //------------------------------3
 
 
-var mistce = document.querySelector('.reklama');
+var kudavst = document.querySelector('.reklama');
 var URL3 = "data.json";
 var res3;
-var text = "";
-console.log(mistce);
+var textVstfin = "";
+console.log(kudavst);
 fetch(URL3).then(function (response) {
   return response.json();
-}).then(function (r) {
-  res3 = r; //  console.log(res3[0].name);
-
+}).then(function (r5) {
+  res3 = r5;
+  console.log(res3);
   vstavka3(res3);
 }).catch(function (err) {
   return console.log(err);
@@ -185,13 +185,36 @@ fetch(URL3).then(function (response) {
 
 var vstavka3 = function vstavka3(response) {
   for (var i = 0; i < 3; i++) {
-    var textu = "        <div>Name: ".concat(res3[i].name, " </div>\n        <div>Price: ").concat(res3[i].prise, "</div>\n        <div>Time:  ").concat(res3[i].time, "</div>\n        <br>");
-    text += textu;
+    var textVstpoch = "<div>Name: ".concat(res3[i].name, " </div>\n         <div>Price: ").concat(res3[i].prise, "</div>\n         <div>Time:  ").concat(res3[i].time, "</div>\n         <br>");
+    textVstfin += textVstpoch;
   }
 
-  console.log(text);
-  mistce.innerHTML = text;
-};
+  console.log(textVstfin);
+  kudavst.innerText = textVstfin;
+}; // let mistce = document.querySelector('.reklama')
+// const URL3 = "data.json"
+// let res3;
+// let text=""
+// console.log(mistce)
+// fetch(URL3)
+//     .then(response=> response.json())
+//     .then(r=>{
+//         res3 = r; 
+//       //  console.log(res3[0].name);
+//         vstavka3(res3)
+//     })
+//     .catch(err=>console.log(err))
+// const vstavka3 = (response) =>{
+//     for(let i=0;i<3;i++){
+//         const textu = `        <div>Name: ${res3[i].name} </div>
+//         <div>Price: ${res3[i].prise}</div>
+//         <div>Time:  ${res3[i].time}</div>
+//         <br>`;
+//         text+=textu
+//     }
+//     console.log(text)
+//     mistce.innerHTML = text;
+// }
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -220,7 +243,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55512" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55315" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

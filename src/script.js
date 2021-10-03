@@ -67,6 +67,34 @@ const vstavka2 = (response) =>{
 
 
 //------------------------------3
+
+let kudavst = document.querySelector('.reklama')
+const URL3= "data.json"
+let res3
+let textVstfin=""
+console.log(kudavst)
+fetch(URL3)
+    .then(response=> response.json())
+    .then(r5=>{
+        res3 = r5; 
+        console.log(res3);
+        vstavka3(res3)
+        
+    })
+
+    .catch(err=>console.log(err))
+
+const vstavka3 = (response) =>{
+    for (let i=0;i<3;i++){
+        const textVstpoch = `<div>Name: ${res3[i].name} </div>
+         <div>Price: ${res3[i].prise}</div>
+         <div>Time:  ${res3[i].time}</div>
+         <br>`
+         textVstfin+=textVstpoch
+    }
+    console.log(textVstfin)
+    kudavst.innerText=textVstfin
+}
 // let mistce = document.querySelector('.reklama')
 // const URL3 = "data.json"
 // let res3;
