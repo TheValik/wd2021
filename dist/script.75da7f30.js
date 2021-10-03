@@ -124,24 +124,36 @@ var text0 = document.getElementById("place10");
 var text1 = document.getElementById("place11");
 var text2 = document.getElementById("place12");
 var text3 = document.getElementById("place13");
+var text4 = document.getElementById("place14");
 var res1;
-fetch(URL1).then(function (response) {
-  return response.json();
-}).then(function (r) {
-  res1 = r; //       console.log(res1);
 
-  vstavka1(res1);
-}).catch(function (err) {
-  return console.log(err);
-});
+function minaty() {
+  fetch(URL1).then(function (response) {
+    return response.json();
+  }).then(function (r) {
+    res1 = r; //       console.log(res1);
 
-var vstavka1 = function vstavka1(response) {
-  text0.textContent = "".concat(Math.round(res1.main.temp - 272.15), "\xB0");
-  text1.textContent = "".concat(Math.round(res1.main.temp_min - 272.15), "\xB0");
-  text2.textContent = "".concat(Math.round(res1.main.temp_max - 272.15), "\xB0");
-  text3.textContent = "".concat(Math.round(res1.main.feels_like - 272.15), "\xB0");
-}; //-------------------------------------------------------- 2
+    vstavka1(res1);
+  }).catch(function (err) {
+    return console.log(err);
+  });
 
+  var vstavka1 = function vstavka1(response) {
+    text0.textContent = "".concat(Math.round(res1.main.temp - 272.15), "\xB0");
+    text1.textContent = "".concat(Math.round(res1.main.temp_min - 272.15), "\xB0");
+    text2.textContent = "".concat(Math.round(res1.main.temp_max - 272.15), "\xB0");
+    text3.textContent = "".concat(Math.round(res1.main.feels_like - 272.15), "\xB0");
+    text4.textContent = "".concat(res1.weather[0].description);
+  };
+}
+
+minaty();
+var btnoform = document.querySelector('.oform');
+btnoform.addEventListener('click', function () {
+  var nom = document.querySelector('.phone').value;
+  var URL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + nom + ",%20UA&APPID=6ed55aaa6af55f24b71d529588503993";
+  minaty();
+}); //-------------------------------------------------------- 2
 
 var res2;
 fetch('https://jsonplaceholder.typicode.com/posts').then(function (response) {
@@ -171,13 +183,13 @@ var vstavka2 = function vstavka2(response) {
 var kudavst = document.querySelector('.taktak');
 var URL3 = "data.json";
 var res3;
-var textVstfin = "";
-console.log(kudavst);
+var textVstfin = ""; //console.log(kudavst)
+
 fetch(URL3).then(function (response) {
   return response.json();
 }).then(function (r5) {
-  res3 = r5;
-  console.log(res3);
+  res3 = r5; //   console.log(res3);
+
   vstavka3(res3);
 }).catch(function (err) {
   return console.log(err);
@@ -187,9 +199,9 @@ var vstavka3 = function vstavka3(response) {
   for (var i = 0; i < 3; i++) {
     var textVstpoch = "<div>Name: ".concat(res3[i].name, " </div>\n         <div>Price: ").concat(res3[i].prise, "</div>\n         <div>Time:  ").concat(res3[i].time, "</div>\n         <br>");
     textVstfin += textVstpoch;
-  }
+  } //  console.log(textVstfin)
 
-  console.log(textVstfin);
+
   kudavst.innerHTML = textVstfin;
 };
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
