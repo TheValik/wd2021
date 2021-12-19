@@ -3,6 +3,6 @@ export interface NewsInterface {
     "id": number
     "name": string
     "text": string
-    "longTest": string
+    "longText": string
     "img": string
 }

@@ -23,10 +23,39 @@ export class NewsComponent implements OnInit {
       this.NewsList = NEWS;
     }
     );
-    console.log(this.NewsList[0].text)
-    console.log("------------------------------")
     return (this.NewsList);
     
   }
+
+  dodinfa1: string="NONE"
+  public DodText1(){
+    if(this.dodinfa1==""){
+      this.dodinfa1="NONE"
+    }
+    else{
+      this.dodinfa1=""
+    }
+  }
+
+  dodinfa2: string="NONE"
+  public DodText2(){
+    if(this.dodinfa2==""){
+      this.dodinfa2="NONE"
+    }
+    else{
+      this.dodinfa2=""
+    }
+  }
+
+  dodinfa3: string="NONE"
+  public DodText3(){
+    if(this.dodinfa3==""){
+      this.dodinfa3="NONE"
+    }
+    else{
+      this.dodinfa3=""
+    }
+  }
+
   
 }
