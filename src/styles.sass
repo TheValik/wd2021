@@ -46,7 +46,24 @@ footer
             padding: 10px
             text-align: center
 
-//переведення новин у колонку при розміру екрана менше 650 Px
+.MenuClick
+    display: none
+
+
+.imgNews
+    max-height: 500px
+    align-items: center
+
+.menu
+    display: flex
+    padding: 5px
+    justify-content: space-between
+    align-items: center
+    flex-wrap: wrap
+.NONE 
+    display: none
+
+//переведення колонку при розміру екрана менше 650 Px
 @media screen and (max-width: 650px)
     .novyny
         flex-direction: column
@@ -55,7 +72,18 @@ footer
             padding-bottom: 40px
     .tema
         font-size: 50pt
-
-.imgNews
-    max-height: 500px
-    align-items: center
+    .MenuClick
+        display: block
+    .menu
+        flex-direction: column
+    
+@media screen and (min-width: 651px)
+    #NONE 
+        display: block
+        
+    .menu
+        display: flex
+        padding: 5px
+        justify-content: space-between
+        align-items: center
+        flex-wrap: wrap
