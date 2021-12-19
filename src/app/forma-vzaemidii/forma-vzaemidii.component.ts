@@ -11,5 +11,19 @@ export class FormaVzaemidiiComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  perem: string ="NO"
+  inputName: string=""
+  inputEmail: string=""
+  inputText: string=""
+  onSubmit() {
+    this.inputName = (<HTMLInputElement>document.getElementById("NameID")).value;
+    this.inputEmail = (<HTMLInputElement>document.getElementById("EmailID")).value;
+    this.inputText = (<HTMLInputElement>document.getElementById("TextID")).value;
+    console.log(this.inputName)
+    console.log(this.inputEmail)
+    console.log(this.inputText)
+    this.perem=""
+  }
 
 }
+
