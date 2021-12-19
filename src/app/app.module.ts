@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { TytulkaComponent } from './tytulka/tytulka.component';
 import { NewsComponent } from './news/news.component';
 import { FormaVzaemidiiComponent } from './forma-vzaemidii/forma-vzaemidii.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FormaVzaemidiiComponent } from './forma-vzaemidii/forma-vzaemidii.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
