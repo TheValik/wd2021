@@ -7,6 +7,8 @@ $color4: #181e1f
     font-family: Roboto
     margin: 0px
     padding: 0px
+header
+    background-color: $color3
 
 .imgVst
     min-height: 1000px
@@ -56,23 +58,36 @@ footer
         margin-left: auto
         margin-right: auto
             
-
+.sylka
+    padding: 10px
+    font-size: 30pt
+    padding-right: 40px
+    &:hover
+        background-color: $color2
+    a
+        text-decoration: none
+        color: black
 .MenuClick
     display: none
+    img
+        height: 100px
+        width: 100px
+        cursor: pointer
+        margin-left: auto
+        margin-right: auto
 
 
 .imgNews
     max-height: 500px
     align-items: center
 
-.menu
-    display: flex
-    padding: 5px
-    justify-content: space-between
-    align-items: center
-    flex-wrap: wrap
 .NONE 
     display: none
+
+.button
+    cursor: pointer
+    &:hover
+        background-color: $color3
 
 //переведення колонку при розміру екрана менше 650 Px
 @media screen and (max-width: 650px)
@@ -94,7 +109,5 @@ footer
         
     .menu
         display: flex
-        padding: 5px
-        justify-content: space-between
-        align-items: center
+        justify-content: left
         flex-wrap: wrap
