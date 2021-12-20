@@ -1,18 +1,15 @@
 <div class="form" id="form">
-    <form class="decor" (submit)="onSubmit()">
+    <form class="decor" >
         <div class="form-inner">
         <h3>Add comment</h3>
         <input type="text" placeholder="Name" id="NameID">
         <input type="email" placeholder="Email" id="EmailID">
         <textarea placeholder="Сomment" rows="3" id="TextID"></textarea>
-        <input class="button" type="submit" value="Send">
+        <input class="button" type="submit" value="Send" (click)="onSubmit()" routerLink="showinputs">
         </div>
     </form>
 </div>
 
 <div class="vyvidPovid {{perem}}">
-
-    <div>{{inputName}}</div>
-    <div>Ваш коментар був привязаний до {{inputEmail}}</div>
-    <div>Коментар: {{inputText}}</div>
+nerabotaet
 </div>

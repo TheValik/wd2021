@@ -10,6 +10,7 @@ import { NewsComponent } from './news/news.component';
 import { FormaVzaemidiiComponent } from './forma-vzaemidii/forma-vzaemidii.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { VstavkaComponentaComponent } from './vstavka-componenta/vstavka-componenta.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     TytulkaComponent,
     NewsComponent,
-    FormaVzaemidiiComponent
+    FormaVzaemidiiComponent,
+    VstavkaComponentaComponent
   ],
   imports: [
     BrowserModule,

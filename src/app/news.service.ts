@@ -13,6 +13,10 @@ export class NewsService {
   
   constructor(private http:HttpClient) { }
   
+  public inputName: string=""
+  public inputEmail: string=""
+  public inputText: string=""
+
   getNews():Observable<NewsInterface[]>{
     return this.http.get<NewsInterface[]>(this.url);
   }

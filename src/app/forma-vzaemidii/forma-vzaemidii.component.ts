@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from '../news.service';
 
 @Component({
   selector: 'app-forma-vzaemidii',
@@ -7,21 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormaVzaemidiiComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly simpleService: NewsService) { }
 
   ngOnInit(): void {
   }
   perem: string ="NO"
-  inputName: string=""
-  inputEmail: string=""
-  inputText: string=""
   onSubmit() {
-    this.inputName = (<HTMLInputElement>document.getElementById("NameID")).value;
-    this.inputEmail = (<HTMLInputElement>document.getElementById("EmailID")).value;
-    this.inputText = (<HTMLInputElement>document.getElementById("TextID")).value;
-    console.log(this.inputName)
-    console.log(this.inputEmail)
-    console.log(this.inputText)
+    this.simpleService.inputName = (<HTMLInputElement>document.getElementById("NameID")).value;
+    this.simpleService.inputEmail = (<HTMLInputElement>document.getElementById("EmailID")).value;
+    this.simpleService.inputText = (<HTMLInputElement>document.getElementById("TextID")).value;
+    console.log(this.simpleService.inputName)
+    console.log(this.simpleService.inputEmail)
+    console.log(this.simpleService.inputText)
     this.perem=""
   }
 
